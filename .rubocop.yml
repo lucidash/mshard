@@ -1,0 +1,10 @@
+inherit_from: .rubocop_todo.yml
+
+Style/RegexpLiteral:
+  Exclude:
+    - 'Guardfile'
+    - 'mshard.gemspec'
+
+Metrics/LineLength:
+  Exclude:
+    - 'spec/spec_helper.rb'
