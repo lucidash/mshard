@@ -14,15 +14,23 @@ module MShard
       self.class.post('/v2/shards', body: params)['id']
     end
 
-    def set_safe(*args)
-      3.times do
+    def try(times: 3, delay: 2)
+      times.times do
         begin
-          return set(*args)
+          return yield
         rescue
         end
-        sleep 2
+        sleep delay
       end
       nil
+    end
+
+    def get_safe(*args)
+      try { get(*args) }
+    end
+
+    def set_safe(*args)
+      try { set(*args) }
     end
 
     def error_to_html(e)
