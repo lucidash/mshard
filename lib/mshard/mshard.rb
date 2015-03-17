@@ -1,4 +1,5 @@
 require 'httparty'
+require 'haml'
 
 module MShard
   class MShard
@@ -11,6 +12,45 @@ module MShard
 
     def set(params)
       self.class.post('/v2/shards', body: params)['id']
+    end
+
+    def set_safe(*args)
+      3.times do
+        begin
+          return set(*args)
+        rescue
+        end
+        sleep 2
+      end
+      nil
+    end
+
+    def error_to_html(e)
+      Haml::Engine.new(<<-HAML).render(Object.new, e: e)
+!!! 5
+%html
+  %head
+    %meta{ name: 'viewport', content: 'width=device-width,initial-scale=1.0' }
+    %title Error
+  %body
+    %p
+      %pre
+        &= e.inspect
+    %p
+      %pre
+        &= e.backtrace.join("\\n")
+      HAML
+    end
+
+    def set_error(e, **opt)
+      set_safe({
+          pushbullet: true,
+          type: 'link',
+          title: 'Error!',
+          body: "#{e.class}\nClick here",
+          contents: error_to_html(e),
+        }.merge(opt)
+      )
     end
   end
 end
