@@ -19,8 +19,8 @@ module MShard
         begin
           return yield
         rescue
+          sleep delay
         end
-        sleep delay
       end
       nil
     end
@@ -29,12 +29,11 @@ module MShard
       try { get(*args) }
     end
 
-    def set_safe(*args)
+    def set_safe(*args) # rubocop:disable Style/AccessorMethodName
       try { set(*args) }
     end
 
-    def error_to_html(e)
-      Haml::Engine.new(<<-HAML).render(Object.new, e: e)
+    ERROR_TEMPLATE = <<-HAML
 !!! 5
 %html
   %head
@@ -48,15 +47,19 @@ module MShard
       %pre
         &= e.backtrace.join("\\n")
       HAML
+
+    def error_to_html(e)
+      Haml::Engine.new(ERROR_TEMPLATE).render(Object.new, e: e)
     end
 
     def set_error(e, **opt)
-      set_safe({
+      set_safe(
+        {
           pushbullet: true,
           type: 'link',
           title: 'Error!',
           body: "#{e.class}\nClick here",
-          contents: error_to_html(e),
+          contents: error_to_html(e)
         }.merge(opt)
       )
     end
