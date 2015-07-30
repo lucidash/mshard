@@ -1,12 +1,12 @@
 require 'mshard/mshard'
 
 describe MShard::MShard do
-  it 'works' do
+  xit 'works' do
     id = subject.set(contents: 'a')
     expect(subject.get(id)).to eq('a')
   end
 
-  it 'works' do
+  xit 'works' do
     subject.set(
       pushbullet: true,
       channel_tag: ENV['PUSHBULLET_CHANNEL'],
