@@ -17,10 +17,19 @@ describe MShard::MShard do
     )
   end
 
-  it '#get works' do
-    expect(described_class).to receive(:get)
-      .with('/v2/shards/id').and_return(double(body: :done))
-    expect(subject.get(:id)).to eq(:done)
+  describe '#get' do
+    before do
+      expect(described_class).to receive(:get)
+        .with('/v2/shards/id').and_return(double(body: :done))
+    end
+
+    it '#get works' do
+      expect(subject.get(:id)).to eq(:done)
+    end
+
+    it '#get_safe works' do
+      expect(subject.get_safe(:id)).to eq(:done)
+    end
   end
 
   it '#set works' do
