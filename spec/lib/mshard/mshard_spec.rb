@@ -17,6 +17,11 @@ describe MShard::MShard do
     )
   end
 
+  it '#try works' do
+    expect(subject.try { :result }).to be(:result)
+    expect(subject.try(delay: 0.01) { fail }).to be(nil)
+  end
+
   describe '#get' do
     before do
       expect(described_class).to receive(:get)
@@ -45,6 +50,12 @@ describe MShard::MShard do
     it '#set_safe works' do
       expect(subject.set_safe(:params)).to eq(:id)
     end
+  end
+
+  it '#set_error works' do
+    expect(described_class).to receive(:post).and_return('id' => :id)
+    e = double(inspect: :inspect, backtrace: [:a, :b])
+    expect(subject.set_error(e)).to eq(:id)
   end
 
   it '#error_to_html works' do
