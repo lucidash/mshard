@@ -1,3 +1,10 @@
+[![Gem Version](https://badge.fury.io/rb/mshard.svg)](http://badge.fury.io/rb/mshard)
+[![Build Status](https://travis-ci.org/ermaker/mshard.svg?branch=master)](https://travis-ci.org/ermaker/mshard)
+[![Dependency Status](https://gemnasium.com/ermaker/mshard.svg)](https://gemnasium.com/ermaker/mshard)
+[![Code Climate](https://codeclimate.com/github/ermaker/mshard/badges/gpa.svg)](https://codeclimate.com/github/ermaker/mshard)
+[![codecov.io](http://codecov.io/github/ermaker/mshard/coverage.svg?branch=master)](http://codecov.io/github/ermaker/mshard?branch=master)
+[![Inline docs](http://inch-ci.org/github/ermaker/mshard.svg?branch=master)](http://inch-ci.org/github/ermaker/mshard)
+
 # Mshard
 
 TODO: Write a gem description
