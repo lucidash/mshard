@@ -17,6 +17,12 @@ describe MShard::MShard do
     )
   end
 
+  it '#get works' do
+    expect(described_class).to receive(:get)
+      .with('/v2/shards/id').and_return(double(body: :done))
+    expect(subject.get(:id)).to eq(:done)
+  end
+
   it '#error_to_html works' do
     e = begin
           fail
