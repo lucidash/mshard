@@ -23,6 +23,12 @@ describe MShard::MShard do
     expect(subject.get(:id)).to eq(:done)
   end
 
+  it '#set works' do
+    expect(described_class).to receive(:post)
+      .with('/v2/shards', body: :params).and_return('id' => :id)
+    expect(subject.set(:params)).to eq(:id)
+  end
+
   it '#error_to_html works' do
     e = begin
           fail
