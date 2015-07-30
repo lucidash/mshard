@@ -7,3 +7,5 @@ rvm:
   - 1.9.3
   - jruby-head
   - jruby-19mode
+before_install:
+  - gem update --system
