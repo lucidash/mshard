@@ -7,7 +7,7 @@ module MShard
     argument :title
     argument :body, required: false
     def ting
-      MShard.new.set_safe(data)
+      MShard.new.set_safe(
         pushbullet: true,
         type: 'note',
         title: title,
