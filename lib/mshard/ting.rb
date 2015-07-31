@@ -4,7 +4,7 @@ require 'mshard'
 module MShard
   class Ting < Thor::Group
     namespace :''
-    argument :title
+    argument :title, default: 'Ting!', required: false
     argument :body, required: false
     def ting
       MShard.new.set_safe(
