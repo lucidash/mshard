@@ -5,7 +5,7 @@ set -xe
 CWD=$(pwd $(dirname $0))
 COV=${CWD}/coverage
 
-COVERAGE=true rake spec
+rake cov
 
 docker run -it --rm \
   -v ${COV}:/usr/share/nginx/html:ro \
