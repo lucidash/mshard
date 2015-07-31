@@ -10,4 +10,4 @@ task :cov do
   Rake::Task[:spec].execute
 end
 
-task default: [:spec, :rubocop]
+task default: [:cov, :rubocop]
