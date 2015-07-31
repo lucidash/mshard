@@ -1,4 +1,4 @@
-require 'mshard/mshard'
+require 'mshard'
 
 describe MShard::MShard do
   it '#try works' do
