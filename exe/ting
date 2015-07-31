@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'mshard'
+require 'mshard/ting'
+
+MShard::Ting.start
