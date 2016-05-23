@@ -47,7 +47,7 @@ GEM
     listen (3.0.5)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
-    lumberjack (1.0.9)
+    lumberjack (1.0.10)
     method_source (0.8.2)
     multi_xml (0.5.5)
     nenv (0.2.0)
