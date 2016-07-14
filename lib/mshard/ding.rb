@@ -9,6 +9,7 @@ module MShard
       MShard.new.set_safe(
         slack: true,
         webhook_url: ENV['SLACK_WEBHOOK_URI'],
+        channel: ENV['SLACK_CHANNEL'],
         text: text
       )
     end
