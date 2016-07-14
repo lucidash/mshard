@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mshard (0.4.0)
+    mshard (0.5.0)
       haml
       httparty
       thor
