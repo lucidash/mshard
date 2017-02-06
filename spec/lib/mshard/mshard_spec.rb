@@ -3,7 +3,7 @@ require 'mshard'
 describe MShard::MShard do
   it '#try works' do
     expect(subject.try { :result }).to be(:result)
-    expect(subject.try(delay: 0.01) { fail }).to be(nil)
+    expect(subject.try(delay: 0.01) { raise }).to be(nil)
   end
 
   describe '#get' do
@@ -44,11 +44,11 @@ describe MShard::MShard do
 
   it '#error_to_html works' do
     e = begin
-          fail
+          raise
         rescue => e
           e
         end
-    html = (subject.error_to_html(e))
+    html = subject.error_to_html(e)
     expect(html).to include('<title>Error</title>')
     expect(html).to include('<pre>RuntimeError</pre>')
   end

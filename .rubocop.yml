@@ -8,3 +8,8 @@ Style/RegexpLiteral:
 Metrics/LineLength:
   Exclude:
     - 'spec/spec_helper.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - '*.gemspec'
+    - 'spec/**/*'
