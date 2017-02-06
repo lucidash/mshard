@@ -1,4 +1,5 @@
 require 'httparty'
+require 'no_proxy_fix'
 require 'haml'
 
 module MShard
@@ -33,7 +34,7 @@ module MShard
       try { set(*args) }
     end
 
-    ERROR_TEMPLATE = <<-HAML
+    ERROR_TEMPLATE = <<-HAML.freeze
 !!! 5
 %html
   %head
