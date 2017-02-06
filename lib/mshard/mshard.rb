@@ -1,4 +1,5 @@
 require 'httparty'
+require 'no_proxy_fix'
 require 'haml'
 
 module MShard
